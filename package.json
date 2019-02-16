@@ -1,0 +1,28 @@
+{
+  "name": "json-api",
+  "version": "1.0.0",
+  "description": "Simple JSON API for storing PubConf Votes (and anything else).",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PubConf/json-api.git"
+  },
+  "author": "Todd Gardner <todd@pubconf.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PubConf/json-api/issues"
+  },
+  "homepage": "https://github.com/PubConf/json-api#readme",
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+    "nedb": "1.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.10"
+  }
+}
