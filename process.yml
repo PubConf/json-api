@@ -3,8 +3,8 @@ apps:
     name: json-api
     watch: true
     ignore_watch:
-      -"data"
-      -"node_modules"
+      - "data"
+      - "node_modules"
     env:
       NODE_ENV: production
       HTTP_PORT: 80
