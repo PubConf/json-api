@@ -6,6 +6,12 @@ const path = require("path");
 let app = express();
 let db = {};
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.all("/:collection/*", (req, res, next) => {
   let collection = req.params.collection;
   if (!db[collection]) {
