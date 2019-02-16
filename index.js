@@ -9,6 +9,7 @@ let db = {};
 app.all("/:collection/*", (req, res, next) => {
   let collection = req.params.collection;
   if (!db[collection]) {
+    console.log("Loading document collection: " + collection);
     db[collection] = new Datastore({
       filename: path.join("./data/", collection, "/db.json"),
       autoload: true
@@ -59,4 +60,6 @@ app.get("/:collection/", (req, res, next) => {
   list({}, { "_timestamp": 1 }, req, res, next);
 });
 
-app.listen(process.env.HTTP_PORT || 5000);
+let port = process.env.HTTP_PORT || 5000;
+console.log("Starting server on port " + port);
+app.listen(port);

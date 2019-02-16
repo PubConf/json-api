@@ -4,7 +4,7 @@
   "description": "Simple JSON API for storing PubConf Votes (and anything else).",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
