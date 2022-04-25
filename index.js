@@ -12,10 +12,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.all("/:collection/*", (req, res, next) => {
+app.all(["/:collection/","/:collection/*"], (req, res, next) => {
   let collection = req.params.collection;
+  console.log(`Checking for collection ${collection}...${!!db[collection]}`);
   if (!db[collection]) {
-    console.log("Loading document collection: " + collection);
+    console.log(`Starting new document collection: ${collection}`);
     db[collection] = new Datastore({
       filename: path.join("./data/", collection, "/db.json"),
       autoload: true
@@ -63,6 +64,7 @@ app.post("/:collection/_query", jsonParser, (req, res, next) => {
 });
 
 app.get("/:collection/", (req, res, next) => {
+  console.log('in get');
   list({}, { "_timestamp": 1 }, req, res, next);
 });
 
