@@ -14,6 +14,14 @@ app.use(function(req, res, next) {
 
 app.all(["/:collection/","/:collection/*"], (req, res, next) => {
   let collection = req.params.collection;
+
+  if (!collection.match(/^[\w\d-]{1,24}$/)) {
+    console.log(`Bad collection request ${collection}`);
+    res.status(400);
+    res.end();
+    return;
+  }
+
   console.log(`Checking for collection ${collection}...${!!db[collection]}`);
   if (!db[collection]) {
     console.log(`Starting new document collection: ${collection}`);
@@ -68,6 +76,6 @@ app.get("/:collection/", (req, res, next) => {
   list({}, { "_timestamp": 1 }, req, res, next);
 });
 
-let port = process.env.HTTP_PORT || 5000;
+let port = process.env.HTTP_PORT || 5001;
 console.log("Starting server on port " + port);
 app.listen(port);
